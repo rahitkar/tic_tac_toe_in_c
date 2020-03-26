@@ -1,0 +1,21 @@
+{
+  "name": "tic_tac_toe_in_c",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "gcc -o tic_tac_toe tic_tac_toe.c; ./tic_tac_toe tic_tac_to",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rahitkar/tic-tac-toe-in-c.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rahitkar/tic-tac-toe-in-c/issues"
+  },
+  "homepage": "https://github.com/rahitkar/tic-tac-toe-in-c#readme"
+}
