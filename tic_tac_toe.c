@@ -4,12 +4,24 @@ void draw_board (char box_values[]) {
   int row, column, counter=0;
   for(row=0; row <3; row++) {
     for(column=0; column <3; column++){
-      printf("%c", box_values[counter]);
-      printf("___|");
+      if (row != 2)
+      {
+      printf("_%c_", box_values[counter]);
+      } else
+      {
+      printf(" %c ", box_values[counter]);
+      }
+           
+      if (column != 2)
+      {
+        printf("|");
+      }
+
       counter++;
     }
     printf("\n");
   }
+  printf("\n");
 }
 
 int get_status (char box_values[]) {
@@ -34,6 +46,8 @@ int main(void) {
   for(int index=0; index < 9; index++) {
     box_values[index] = index + 48;
   }
+
+  printf("     Let's begain\nThe tic_tac_toe journey\n\n");
   draw_board(box_values);
 
 for(move=1; move<10; move++){
