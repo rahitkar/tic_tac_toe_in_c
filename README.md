@@ -1,1 +1,1 @@
-# tic-tac-toe-in-c
+# tic_tac_toe_in_c
