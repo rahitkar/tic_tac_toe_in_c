@@ -12,7 +12,7 @@ void draw_board (char box_values[]) {
   }
 }
 
-void show_state (char box_values[]) {
+int get_status (char box_values[]) {
   int a,b,c;
   int possibilities[4][3] = {{0,4,8}, {1,4,7}, {2,4,6}, {3,4,5}};
 
@@ -21,37 +21,34 @@ void show_state (char box_values[]) {
     b = box_values[possibilities[index][1]];
     c = box_values[possibilities[index][2]];
     if(a == b && a == c){ 
-    printf("%c has won\n", a);
+    return 1;
     } 
   }
+  return 0;
 }
 
 int main(void) {
   int box_num, move;
-  char symble= 88, box_values[9], state;
+  char symble[2]= {88,79}, box_values[9], toggle = 0;
 
   for(int index=0; index < 9; index++) {
-    box_values[index] = index + 49;
+    box_values[index] = index + 48;
   }
-
   draw_board(box_values);
-  show_state(box_values);
-for(move=1; move<10; move++){
-  if (move%2==0)
-  {
-    symble = 79;
-  } else
-  {
-    symble= 88;
-  }
 
-  printf("player %c's turn\n", symble);
+for(move=1; move<10; move++){
+  printf("player %c's turn\n", symble[toggle]);
   printf("write the box number: ");
   scanf("%d", &box_num);
-  box_values[box_num -1]= symble;
+  box_values[box_num]= symble[toggle];
   draw_board(box_values);
-  show_state(box_values);
+
+  if(get_status(box_values)){
+    printf("%c has won\n", symble[toggle]);
+    return 0;
+  };
+  toggle = !toggle;
 }
-  
+  printf("game draw\n");
   return 0;
 }
