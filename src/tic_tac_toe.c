@@ -42,12 +42,22 @@ int get_status (char *box_values) {
   return 0;
 }
 
+int get_place_status (char * box_values, int box_num) {
+  if (box_values[box_num] == 88 || box_values[box_num] == 79)
+  {
+    printf("This place is already occupied.\nEnter other box number: ");
+    scanf("%d", &box_num);
+    return  get_place_status(box_values, --box_num);
+  }
+  return box_num;
+}
+
 int main(void) {
   int box_num, move;
   char symble[2]= {88,79}, box_values[9], toggle = 0;
 
   for(int index=0; index < 9; index++) {
-    box_values[index] = index + 48;
+    box_values[index] = index + 49;
   }
 
   printf("     Let's begain\nThe tic_tac_toe journey\n\n");
@@ -57,6 +67,8 @@ for(move=1; move<10; move++){
   printf("player %c's turn\n", symble[toggle]);
   printf("write the box number: ");
   scanf("%d", &box_num);
+  box_num = get_place_status(box_values, --box_num);
+  
   box_values[box_num]= symble[toggle];
   draw_board(box_values);
 
