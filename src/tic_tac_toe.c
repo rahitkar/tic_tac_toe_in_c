@@ -1,6 +1,9 @@
 #include <stdio.h>
 
-void draw_board (char box_values[]) {
+void draw_board(char *);
+int get_status (char *);
+
+void draw_board (char *box_values) {
   int row, column, counter=0;
   for(row=0; row <3; row++) {
     for(column=0; column <3; column++){
@@ -24,15 +27,15 @@ void draw_board (char box_values[]) {
   printf("\n");
 }
 
-int get_status (char box_values[]) {
+int get_status (char *box_values) {
   int a,b,c;
-  int possibilities[4][3] = {{0,4,8}, {1,4,7}, {2,4,6}, {3,4,5}};
+  int possibilities[8][3] = {{0,1,2}, {0,3,6}, {0,4,8}, {1,4,7}, {2,4,6}, {2,5,8}, {3,4,5}, {6,7,8}};
 
-  for(int index=0; index < 4; index++) {
+  for(int index=0; index < 8; index++) {
     a = box_values[possibilities[index][0]];
     b = box_values[possibilities[index][1]];
     c = box_values[possibilities[index][2]];
-    if(a == b && a == c){ 
+    if(a == b && a == c) { 
     return 1;
     } 
   }
